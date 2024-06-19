@@ -9,8 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "epic-spinners": "^2.0.0",
+    "pinia": "^2.1.7",
     "vue": "^3.4.21",
-    "vue-router": "^4.3.3"
+    "vue-router": "^4.3.3",
+    "vue3-lazyload": "^0.3.8"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",

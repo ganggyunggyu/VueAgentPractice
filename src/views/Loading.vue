@@ -1,11 +1,12 @@
 <script setup>
-import { RadarSpinner } from 'epic-spinners';
+import Background from '../shared/ui/Background.vue';
+import Spinner from '../shared/ui/Spinner.vue';
 </script>
 
 <template>
   <div>
-    <RadarSpinner class="spinner" :animation-duration="2000" :size="80" color="#ff1d5e" />
-    <img src="/static//resource/common/bg.png" alt="" />
+    <Spinner />
+    <Baackground />
   </div>
 </template>
 
@@ -22,13 +23,5 @@ div {
   justify-content: center;
   width: 100vw;
   height: 100vh;
-}
-img {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-}
-.spinner {
-  z-index: 10;
 }
 </style>

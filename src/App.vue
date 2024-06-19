@@ -1,12 +1,15 @@
-<template></template>
+<template>
+  <router-view> </router-view>
+</template>
 
 <script>
 import { onMounted } from 'vue';
+name: 'App';
 export default {
   setup() {
     const getBrowserName = () => {
       const userAgent = navigator.userAgent.toLowerCase();
-      console.log('browser name agent', userAgent);
+
       if (userAgent.match(/chrome|chromium|crios/i)) {
         return 'chrome';
       }
@@ -25,7 +28,6 @@ export default {
       if (userAgent.match(/samsung/i)) {
         return 'samsung';
       }
-
       if (userAgent.match(/kakao/i)) {
         return 'kakao';
       }
@@ -166,5 +168,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>

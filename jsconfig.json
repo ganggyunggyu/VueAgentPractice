@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@views/*": ["./src/views/*"],
+      "@resource/*": ["./static/resource/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "**/*.vue", "**/*.tsx"]
+  // "references": [{ "path": "./jsconfig.json" }]
+}

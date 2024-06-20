@@ -1,5 +1,5 @@
 <script setup>
-import { computed, defineProps, onMounted, onUnmounted, ref, watch } from 'vue';
+import { computed,  onMounted, onUnmounted, ref } from 'vue';
 import { useCharacterStore } from '../../stores/characterStore';
 import { getUrl } from '../../shared/lib/getUrl';
 import { setVh } from '../../shared/lib/setVh';
@@ -8,24 +8,9 @@ const char = computed(() => chars.currentCharacter);
 
 const TEXT = '자, 다음은 어디로 갈래? 원하는 곳을 누르면 위치를 알려줄게.';
 
-// const props = defineProps({
-//   text: {
-//     type: String,
-//   },
-//   image: {
-//     type: String,
-//   },
-// });
-
 const typedText = ref('');
 let typingTimer;
 
-watch(
-  () => 'sadasdasdadasdasd.asdsadas',
-  (newText) => {
-    startTyping(newText);
-  },
-);
 const startTyping = (text) => {
   clearInterval(typingTimer);
   typedText.value = '';
@@ -35,7 +20,7 @@ const startTyping = (text) => {
     if (index < text.length) {
       typedText.value += text[index];
       index++;
-      if (text[index - 1] === '.') {
+      if (text[index - 1] === '?') {
         typedText.value += '<br />';
       }
     } else {
@@ -56,7 +41,7 @@ onUnmounted(() => {
 
 <template>
   <section>
-    <img :src="`${getUrl(char.maker)}`" alt="" />
+    <img :src="`${getUrl(char.normal)}`" alt="" />
     <p v-html="typedText"></p>
   </section>
 </template>
@@ -67,22 +52,30 @@ export default {};
 
 <style scoped>
 section {
-  border: 3px var(--color-red) dashed;
+  border: 2px var(--color-red) dashed;
   border-radius: 20px;
   padding: 10px;
-  width: 80vw;
-  height: calc(30 * var(--vh));
+  width: 90vw;
+  height: calc(10 * var(--vh));
   background: white;
   display: flex;
   align-items: center;
-  justify-content: center;
   font-weight: 500;
   position: relative;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+
 }
 img {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -40px;
+  right: 0px;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  border: 2px solid var(--color-red);
+  background-color: white;
+
+  
 }
 p {
   line-height: 25px;

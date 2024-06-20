@@ -1,16 +1,34 @@
 <script setup>
 import TextBox from '../features/stage/TextBox.vue';
-import OptionList from '../features/stage/OptionList.vue';
+import EventList from '../features/stage/EventList.vue';
 import BottomNavigation from '../features/stage/BottomNavigation.vue';
+import Background from '@/shared/ui/Background.vue';
+import { setVh } from '@/shared/lib/setVh';
 </script>
 <template>
-  <TextBox :text="'asdasdsaddsad'" :image="'asdsad'" />
-  <OptionList />
+  <main>
+    <Background/>
+  <TextBox />
+  <EventList />
   <BottomNavigation />
+</main>
 </template>
 
 <script>
-export default {};
+export default {
+  name:'Stage',
+  setup(){  
+    setVh()
+}
+
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: calc(5*var(--vh));
+}
+</style>

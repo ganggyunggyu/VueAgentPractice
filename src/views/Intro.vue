@@ -113,6 +113,7 @@ onUnmounted(() => {
 }
 .logo {
   height: calc(20 * var(--vh));
+  width: 90%;
 }
 .char-container {
   display: flex;
@@ -135,7 +136,7 @@ onUnmounted(() => {
   width: 70vw;
 }
 .text-container {
-  border: 3px var(--color-red) dashed;
+  border: 2px var(--color-red) dashed;
   border-radius: 20px;
   padding: 10px;
   width: 80vw;
@@ -155,6 +156,7 @@ onUnmounted(() => {
   color: white;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
   transition: scale 0.3s;
+  height: auto;
 }
 .button-container img {
   width: 50px;

@@ -6,7 +6,7 @@ import Spinner from '../shared/ui/Spinner.vue';
 <template>
   <div>
     <Spinner />
-    <Baackground />
+    <Background />
   </div>
 </template>
 

@@ -10,7 +10,7 @@ const props = defineProps({
     required: true
   },
   isModal: {
-    type:Boolean,
+    type: Boolean,
     required:true
   }
 });
@@ -27,7 +27,7 @@ onMounted(() => {
 
 <template>
 <section>
-    <button @click="closeModal">X</button>
+    <button class="close-button" @click="closeModal">❌</button>
     <article class="top-container">
     <img class="icon" :src="`${getUrl(props.event.icon)}`" alt="">
     <div class="title-container">
@@ -48,7 +48,7 @@ onMounted(() => {
 <style scoped>
 section {
   width: 90%;
-  height: calc(60 * var(--vh));
+  height: calc(70 * var(--vh));
   background-color: white;
   z-index: 999;
   position: fixed;
@@ -84,7 +84,7 @@ section {
     width: 80%;
 }
 .reward{
-    width: 80%;
+    width: 100%;
 }
 .title-container{
 flex-grow: 1;
@@ -99,5 +99,17 @@ flex-grow: 1;
 }
 .content3{
     font-size: 18px;
+}
+.close-button{
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  padding: 5px;
+  transition: all 0.3s
+}
+.close-button:hover{
+  scale: 1.2;
+  background: #eee;
+  border-radius: 16px;
 }
 </style>

@@ -18,7 +18,7 @@ onMounted(()=>{
 
 <template>
     <nav>
-<button @click="this.$router.go(-1)">
+<button @click="redirectPrev">
     <PrevButtonRed/>
 </button>
 <p>{{ title }}</p>
@@ -27,6 +27,17 @@ onMounted(()=>{
 </button>
 </nav>
 </template>
+
+<script>
+export default {
+    methods:{
+        redirectPrev: ()=>{
+            this.$router.go(-1)
+        }
+    } 
+}
+</script>
+
 <style scoped>
 nav{
     display: flex;

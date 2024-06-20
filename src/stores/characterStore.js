@@ -4,6 +4,10 @@ const bellIntro = new URL('@resource/intro/bell.png', import.meta.url).href;
 const unoIntro = new URL('@resource/intro/uno.png', import.meta.url).href;
 const sorinaIntro = new URL('@resource/intro/sorina.png', import.meta.url).href;
 
+const bellNormal = new URL('@resource/character/Bell_Normal.png', import.meta.url).href;
+const unoNormal = new URL('@resource/character/Uno_Normal.png', import.meta.url).href;
+const sorinaNormal = new URL('@resource/character/Sorina_Normal.png', import.meta.url).href;
+
 const makerUrl1 = new URL('@resource/tutorial/map_point_bell.png', import.meta.url).href;
 const makerUrl2 = new URL('@resource/tutorial/map_point_uno.png', import.meta.url).href;
 const makerUrl3 = new URL('@resource/tutorial/map_point_sorina.png', import.meta.url).href;
@@ -32,6 +36,7 @@ export const useCharacterStore = defineStore('character', {
       {
         name: '벨',
         maker: makerUrl1,
+        normal:bellNormal,
         intro: [
           { text: '안녕, 나는 마법사 벨이야. 숲 복원을 지원해줘서 고마워. ', src: bellIntro },
           { text: '안녕, 난 마법사 벨이야' },
@@ -369,6 +374,7 @@ export const useCharacterStore = defineStore('character', {
       {
         name: '소리나',
         maker: makerUrl3,
+        normal:sorinaNormal,
         intro: [
           { text: '나는 뱀파이어 소리나. 숲을 복원하러 같이 간다고?', src: sorinaIntro },
           { text: '안녕, 난 뱀파이어 소리나야.' },
@@ -712,6 +718,7 @@ export const useCharacterStore = defineStore('character', {
       {
         name: '우노',
         maker: makerUrl2,
+        normal:unoNormal,
         intro: [
           { text: '웨어울프 우노라고 해. 숲 복원하러 함께 갈거야?', src: unoIntro },
           { text: '안녕, 난 웨어울프 우노야' },

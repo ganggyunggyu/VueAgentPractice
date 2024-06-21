@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "",
     "paths": {
-      "@views/*": ["./src/views/*"],
-      "@resource/*": ["./static/resource/*"],
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"],
+      "@views/*": ["src/views/*"],
+      "@shared/*": ["src/shared/*"],
+      "@resource/*": ["static/resource/*"]
     }
   },
-  "include": ["src", "**/*.vue", "**/*.tsx"]
-  // "references": [{ "path": "./jsconfig.json" }]
+  "include": ["src", "**/*.vue", "**/*.wav", "**/*.js"]
+  // "references": [{ "path": "" }]
 }

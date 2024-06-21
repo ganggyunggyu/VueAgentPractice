@@ -4,22 +4,21 @@ import EventDetailModal from '@/entities/stage/ui/EventDetailModal.vue';
 import { useEventStore } from '@/stores/event';
 import { ref, onMounted } from 'vue';
 import { setVh } from '@/shared/lib/setVh';
+import { playAudio } from '@/shared/lib/audio';
 
 const store = useEventStore();
-const events = ref([]);
+const eventsRef = ref([]);
 const eventRef = ref({});
 const isModal = ref(false);
 
 const fetchEvents = () => {
-  events.value = store.fetchData();
+  eventsRef.value = store.fetchData();
 };
 
 const handleEvent = (event) => {
   eventRef.value = event;
-
-    isModal.value = true;
-
-
+  isModal.value = true;
+  playAudio();
 };
 
 onMounted(() => {
@@ -32,7 +31,8 @@ onMounted(() => {
   <EventDetailModal v-if="isModal" :event="eventRef" @update:isModal="isModal = $event" />
   <section>
     <EventItem
-      v-for="event in events" :key="event.id"
+      v-for="event in eventsRef"
+      :key="event.id"
       :icon="event.icon"
       :title1="event.title1"
       :title2="event.title2"

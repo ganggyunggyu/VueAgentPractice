@@ -1,8 +1,9 @@
 <script setup>
-import { computed,  onMounted, onUnmounted, ref } from 'vue';
-import { useCharacterStore } from '../../stores/characterStore';
-import { getUrl } from '../../shared/lib/getUrl';
-import { setVh } from '../../shared/lib/setVh';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { useCharacterStore } from '@/stores/characterStore';
+import { getUrl } from '@/shared/lib/getUrl';
+import { setVh } from '@/shared/lib/setVh';
+
 const chars = useCharacterStore();
 const char = computed(() => chars.currentCharacter);
 
@@ -63,7 +64,6 @@ section {
   font-weight: 500;
   position: relative;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-
 }
 img {
   position: absolute;
@@ -74,8 +74,6 @@ img {
   border-radius: 50%;
   border: 2px solid var(--color-red);
   background-color: white;
-
-  
 }
 p {
   line-height: 25px;

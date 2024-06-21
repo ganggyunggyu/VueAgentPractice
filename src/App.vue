@@ -4,6 +4,7 @@
 
 <script>
 import { onMounted } from 'vue';
+import { setVh } from './shared/lib/setVh';
 name: 'App';
 export default {
   setup() {
@@ -46,9 +47,7 @@ export default {
     const getOsName = () => {
       var os;
       const ua = navigator.userAgent;
-
-      console.log('getOs', ua);
-
+      
       if (ua.match(/Win(dows )?NT 6\.0/)) {
         os = 'Windows Vista';
       } else if (ua.match(/Win(dows )?(NT 5\.1|XP)/)) {
@@ -163,6 +162,7 @@ export default {
       return true;
     };
     onMounted(() => {
+      setVh()
       checkBrowser(true);
     });
   },

@@ -43,14 +43,14 @@ onMounted(() => {
       </div>
     </article>
     <article class="bottom-container">
-      <img class="logo" src="../../../../static/resource/common/event_logo.png" alt="" />
+      <img class="logo" src="../../../../static/resource/common/event_logo.png" alt="logo-image" />
       <img
         width="250px"
         height="250px"
         loading="lazy"
         class="reward"
         :src="`${getUrl(props.event.src)}`"
-        alt=""
+        alt="reeward-image"
       />
       <p>{{ props.event.content4 }}</p>
       <p>{{ props.event.content5 }}</p>

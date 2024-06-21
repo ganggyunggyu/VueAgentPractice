@@ -1,33 +1,45 @@
 <template>
   <div>
-    <img class="landing-img" src="/static/resource/landing/landing_01_01.jpg" alt="" />
+    <img
+      class="landing-img"
+      src="/static/resource/landing/landing_01_01.jpg"
+      alt=""
+    />
     <div class="button-container">
       <button @click="this.$router.replace('intro')">신비의숲 시작하기</button>
       <img src="https://moundxr.com/assets/tap-a9529b41.png" alt="" />
     </div>
-    <img class="landing-img" src="/static/resource/landing/landing_01_02.jpg" alt="" />
-    <img class="landing-img" src="/static/resource/landing/landing_02.jpg" alt="" />
+    <img
+      class="landing-img"
+      src="/static/resource/landing/landing_01_02.jpg"
+      alt=""
+    />
+    <img
+      class="landing-img"
+      src="/static/resource/landing/landing_02.jpg"
+      alt=""
+    />
     <div class="button-container">
       <button @click="this.$router.replace('intro')">신비의숲 시작하기</button>
     </div>
-    <img class="landing-img" src="/static/resource/landing/web-landing-page-3.jpg" alt="" />
+    <img
+      class="landing-img"
+      src="/static/resource/landing/web-landing-page-3.jpg"
+      alt=""
+    />
   </div>
 </template>
 
 <script>
-import { onMounted } from 'vue';
+import { setVh } from "@/shared/lib/setVh";
+import { onMounted } from "vue";
 
-export const setVh = () => {
-  const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-};
-
-window.addEventListener('resize', function () {
+window.addEventListener("resize", function () {
   setVh();
 });
 
 export default {
-  name: 'Landing',
+  name: "Landing",
   setup() {
     setVh();
   },

@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import { createCameraElement } from "@/shared/lib/onCamera";
-import { setVh } from "@/shared/lib/setVh";
-import { onMounted, ref } from "vue";
-import * as THREE from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { DragControls } from "three/examples/jsm/controls/DragControls.js";
+import { createCameraElement } from '@/shared/lib/onCamera';
+import { setVh } from '@/shared/lib/setVh';
+import { onMounted, ref } from 'vue';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { DragControls } from 'three/examples/jsm/controls/DragControls.js';
 
 export default {
   setup() {
@@ -33,7 +33,7 @@ export default {
         50,
         window.innerWidth / window.innerHeight,
         0.1,
-        1000
+        1000,
       );
       const renderer = new THREE.WebGLRenderer({
         canvas: canvasRef.value,
@@ -65,7 +65,7 @@ export default {
 
       const loader = new GLTFLoader();
       loader.load(
-        "../../../static/models/Bell/Bell_new.gltf",
+        '../../../static/models/Bell/Bell_new.gltf',
         function (gltf) {
           const model = gltf.scene;
           scene.add(model);
@@ -76,7 +76,7 @@ export default {
         undefined,
         function (error) {
           console.error(error);
-        }
+        },
       );
 
       renderer.setSize(window.innerWidth, containerRef.value.clientHeight);
@@ -88,10 +88,10 @@ export default {
 
       const controls = new DragControls(objects, camera, renderer.domElement);
 
-      document.addEventListener("click", onClick);
-      window.addEventListener("resize", onWindowResize);
-      window.addEventListener("keydown", onKeyDown);
-      window.addEventListener("keyup", onKeyUp);
+      document.addEventListener('click', onClick);
+      window.addEventListener('resize', onWindowResize);
+      window.addEventListener('keydown', onKeyDown);
+      window.addEventListener('keyup', onKeyUp);
 
       function animate() {
         requestAnimationFrame(animate);
@@ -143,8 +143,7 @@ export default {
         isSeleted = event.keyCode === 16;
 
         if (event.keyCode === 77) {
-          controls.mode =
-            controls.mode === "translate" ? "rotate" : "translate";
+          controls.mode = controls.mode === 'translate' ? 'rotate' : 'translate';
         }
       }
 

@@ -1,9 +1,9 @@
 <script setup>
-import BottomButtonNav from "@/features/busan-coex/BottomButtonNav.vue";
-import Tutorial from "@/features/busan-coex/Tutorial.vue";
-import TopButtonNav from "@/features/busan-coex/TopButtonNav.vue";
-import Loading from "@/features/busan-coex/Loading.vue";
-import Capture from "../features/capture/Capture.vue";
+import BottomButtonNav from '@/features/busan-coex/BottomButtonNav.vue';
+import Tutorial from '@/features/busan-coex/Tutorial.vue';
+import TopButtonNav from '@/features/busan-coex/TopButtonNav.vue';
+import Loading from '@/features/busan-coex/Loading.vue';
+import Capture from '../features/capture/Capture.vue';
 </script>
 
 <template>
@@ -14,17 +14,17 @@ import Capture from "../features/capture/Capture.vue";
   <BottomButtonNav v-if="!isTutorial" />
 </template>
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted, ref } from 'vue';
 const isTutorial = ref(true);
 
 export default {
   setup() {
     const setVH = () => {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
       let vh = window.innerHeight * 0.01;
       console.log(window.innerHeight * 0.01);
 
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
     };
     const handleTutorial = () => {
       isTutorial = false;
@@ -32,7 +32,7 @@ export default {
     };
     onMounted(() => {
       setVH();
-      window.addEventListener("resize", setVH);
+      window.addEventListener('resize', setVH);
     });
   },
 };

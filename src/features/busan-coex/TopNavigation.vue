@@ -1,7 +1,7 @@
 <template>
   <div class="top-button-container">
-    <button class="top-button"></button
-    ><button class="top-button">
+    <div class="empty-box"></div>
+    <button class="top-button">
       <svg
         data-v-508ceac8=""
         xmlns="http://www.w3.org/2000/svg"
@@ -76,20 +76,12 @@
 
 <script>
 import { onMounted } from "vue";
-
+import { setVh } from "@/shared/lib/setVh";
 export default {
   setup() {
-    const setVH = () => {
-      document.body.style.overflow = "hidden";
-      let vh = window.innerHeight * 0.01;
-      console.log(window.innerHeight * 0.01);
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-    };
     onMounted(() => {
-      setVH();
-      console.log(window.innerHeight * 0.01);
-      window.addEventListener("resize", setVH);
+      setVh();
+      window.addEventListener("resize", setVh);
     });
   },
 };
@@ -97,14 +89,20 @@ export default {
 
 <style scoped>
 .top-button-container {
-  width: 100vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  width: 100%;
   height: calc(10 * var(--vh));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
 }
-.top-button {
-  height: 60px;
-  width: 60px;
+.top-button svg {
+  height: calc(5 * var(--vh));
+  width: calc(5 * var(--vh));
+}
+
+.empty-box {
+  height: calc(5 * var(--vh));
+  width: calc(5 * var(--vh));
 }
 </style>

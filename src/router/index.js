@@ -5,8 +5,9 @@ import Loading from '@views/Loading.vue';
 import Stage from '@views/Stage.vue';
 import NormalStorage from '@views/NormalStorage.vue';
 import PrimiumStorage from '@views/PrimiumStorage.vue';
-import Coex from '@views/Coex.vue'
+import Coex from '@views/Coex.vue';
 import Busan from '@/views/Busan.vue';
+import Complate from '@/views/Complate.vue';
 
 export const routes = [
   { path: '/', component: Landing, name: 'Landing' },
@@ -14,9 +15,18 @@ export const routes = [
   { path: '/loading', component: Loading, name: 'Loading' },
   { path: '/stage', component: Stage, name: 'Stage' },
   { path: '/normal-storage', component: NormalStorage, name: 'NomalStorage' },
-  { path: '/primium-storage', component: PrimiumStorage, name: 'PrimiumStorage' },
+  {
+    path: '/primium-storage',
+    component: PrimiumStorage,
+    name: 'PrimiumStorage',
+  },
   { path: '/coex', component: Coex, name: 'Coex' },
-  { path: '/busan', component: Busan, name: 'Busan' },
+  {
+    path: '/busan',
+    component: Busan,
+    name: 'Busan',
+  },
+  { path: '/complate', component: Complate, name: 'Complate' },
 ];
 
 const router = createRouter({

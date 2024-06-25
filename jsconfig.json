@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2022",
     "baseUrl": "",
     "paths": {
       "@/*": ["src/*"],
@@ -8,6 +10,6 @@
       "@resource/*": ["static/resource/*"]
     }
   },
-  "include": ["src", "**/*.vue", "**/*.wav", "**/*.js"]
+  "include": ["src", "src/**/*", "**/*.vue", "**/*.wav", "**/*.js, node_modules"]
   // "references": [{ "path": "" }]
 }

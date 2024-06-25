@@ -1,10 +1,6 @@
 <template>
   <div class="tutorial-container">
-    <img
-      class="bell"
-      src="https://moundxr.com/assets/bell-c8de80d5.png"
-      alt=""
-    />
+    <img class="bell" src="https://moundxr.com/assets/bell-c8de80d5.png" alt="" />
     <div class="text-container">
       <p style="color: #d50f4a">벨, 소리나, 우노</p>
       <p>마음에 드는 캐릭터를 선택해서</p>
@@ -34,12 +30,7 @@
             height="28"
             data-v-508ceac8=""
           >
-            <rect
-              width="28"
-              height="28"
-              fill="#D9D9D9"
-              data-v-508ceac8=""
-            ></rect>
+            <rect width="28" height="28" fill="#D9D9D9" data-v-508ceac8=""></rect>
           </mask>
           <g mask="url(#mask0_541_1846)" data-v-508ceac8="">
             <path
@@ -51,29 +42,9 @@
         </svg>
         <span>캐릭터</span>
         <div class="tutorial-icon">
-          <svg
-            viewBox="0 0 100 100"
-            xmlns="http://www.w3.org/2000/svg"
-            data-v-508ceac8=""
-          >
-            <circle
-              cx="50"
-              cy="50"
-              r="35"
-              fill="none"
-              stroke-width="2"
-              stroke="#d50f4a"
-              data-v-508ceac8=""
-            ></circle>
-            <circle
-              cx="50"
-              cy="50"
-              r="30"
-              fill="none"
-              stroke-width="2"
-              stroke="#d50f4a"
-              data-v-508ceac8=""
-            ></circle>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" data-v-508ceac8="">
+            <circle cx="50" cy="50" r="35" fill="none" stroke-width="2" stroke="#d50f4a" data-v-508ceac8=""></circle>
+            <circle cx="50" cy="50" r="30" fill="none" stroke-width="2" stroke="#d50f4a" data-v-508ceac8=""></circle>
           </svg>
         </div>
       </button>
@@ -86,30 +57,9 @@
           viewBox="0 0 70 70"
           fill="none"
         >
-          <circle
-            data-v-508ceac8=""
-            cx="35"
-            cy="35"
-            r="28"
-            fill="#D50F4A"
-          ></circle>
-          <circle
-            data-v-508ceac8=""
-            opacity="0.3"
-            cx="35"
-            cy="35"
-            r="33.5"
-            stroke="#D50F4A"
-            stroke-width="3"
-          ></circle>
-          <circle
-            data-v-508ceac8=""
-            cx="35"
-            cy="35"
-            r="10.5"
-            stroke="white"
-            stroke-width="3"
-          ></circle>
+          <circle data-v-508ceac8="" cx="35" cy="35" r="28" fill="#D50F4A"></circle>
+          <circle data-v-508ceac8="" opacity="0.3" cx="35" cy="35" r="33.5" stroke="#D50F4A" stroke-width="3"></circle>
+          <circle data-v-508ceac8="" cx="35" cy="35" r="10.5" stroke="white" stroke-width="3"></circle>
         </svg>
       </button>
       <button class="bottom-button2">
@@ -131,29 +81,9 @@
           ></path></svg
         ><span>스티커</span>
         <div class="tutorial-icon">
-          <svg
-            viewBox="0 0 100 100"
-            xmlns="http://www.w3.org/2000/svg"
-            data-v-508ceac8=""
-          >
-            <circle
-              cx="50"
-              cy="50"
-              r="35"
-              fill="none"
-              stroke-width="2"
-              stroke="#d50f4a"
-              data-v-508ceac8=""
-            ></circle>
-            <circle
-              cx="50"
-              cy="50"
-              r="30"
-              fill="none"
-              stroke-width="2"
-              stroke="#d50f4a"
-              data-v-508ceac8=""
-            ></circle>
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" data-v-508ceac8="">
+            <circle cx="50" cy="50" r="35" fill="none" stroke-width="2" stroke="#d50f4a" data-v-508ceac8=""></circle>
+            <circle cx="50" cy="50" r="30" fill="none" stroke-width="2" stroke="#d50f4a" data-v-508ceac8=""></circle>
           </svg>
         </div>
       </button>
@@ -162,95 +92,72 @@
 </template>
 
 <script>
-import { onMounted } from "vue";
-export default {
-  setup() {
-    const setVH = () => {
-      document.body.style.overflow = "hidden";
-      let vh = window.innerHeight * 0.01;
-      console.log(window.innerHeight * 0.01);
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
-    };
-    onMounted(() => {
-      setVH();
-      console.log(window.innerHeight * 0.01);
-      window.addEventListener("resize", setVH);
-    });
-  },
-};
+  import { onMounted } from 'vue';
+  import { setVh } from '@/shared/lib/setVh';
+
+  export default {
+    setup() {
+      onMounted(() => {
+        setVh();
+        window.addEventListener('resize', setVh);
+      });
+    },
+  };
 </script>
 
 <style scoped>
-.bell {
-  width: 100vw;
-  position: absolute;
-  top: 0;
-  z-index: 10;
-}
-.text-container {
-  position: absolute;
-  top: 55%;
-  width: 100%;
-  z-index: 10;
-  text-align: center;
-}
-.tutorial-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: space-between;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  bottom: 0;
-  z-index: 5;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.7
-  ); /* Black background with 50% opacity */
-}
-.tutorial-icon {
-  position: absolute;
-  width: 100%;
-  animation-name: test;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  z-index: 10;
-}
-.bottom-button-container2 {
-  width: 100vw;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: space-around;
-  align-items: center;
-  position: absolute;
-  bottom: 0;
-  height: calc(15 * var(--vh));
-  background: darkgray;
-}
-.bottom-button2 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-weight: 800;
-  height: 100%;
-}
-
-@keyframes test {
-  0% {
-    scale: 0.7;
+  .bell {
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    z-index: 10;
   }
-
-  50% {
-    scale: 1.5;
+  .text-container {
+    position: absolute;
+    top: 55%;
+    width: 100%;
+    z-index: 10;
+    text-align: center;
+    font-size: 20px;
   }
-  100% {
-    scale: 0.7;
+  .tutorial-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    bottom: 0;
+    z-index: 5;
+    background-color: rgba(255, 255, 255, 0.7); /* Black background with 50% opacity */
   }
-}
+  .tutorial-icon {
+    position: absolute;
+    width: 100%;
+    animation-name: scale;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    z-index: 10;
+  }
+  .bottom-button-container2 {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    height: calc(15 * var(--vh));
+    background: darkgray;
+  }
+  .bottom-button2 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 800;
+    height: 100%;
+  }
 </style>

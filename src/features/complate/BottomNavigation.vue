@@ -1,11 +1,18 @@
 <script setup>
+  import router from '@/router/index';
   import PrevButtonRed2 from '@/shared/ui/PrevButtonRed2.vue';
   import Save from '@/shared/ui/Save.vue';
   import Share from '@/shared/ui/Share.vue';
+
+  const handleSave = () => {};
+  const handleShare = () => {};
+  const handlePrev = () => {
+    router.push('busan');
+  };
 </script>
 <template>
   <section>
-    <button>
+    <button @click="handlePrev">
       <PrevButtonRed2 />
       <span>뒤로</span>
     </button>

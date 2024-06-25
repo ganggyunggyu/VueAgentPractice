@@ -2,6 +2,7 @@
   import { useImageDataStore } from '@/stores/imageData';
   import TopNavigation from '@/features/busan-coex/TopNavigation.vue';
   import BottomNavigation from '@/features/complate/BottomNavigation.vue';
+  import router from '@/router/index';
   const imageStore = useImageDataStore();
   const imageData = imageStore.imageData;
 </script>

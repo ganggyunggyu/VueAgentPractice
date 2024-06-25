@@ -10,50 +10,51 @@
 </template>
 
 <script>
-import { onMounted, onUnmounted, ref } from "vue";
-const showLoading = ref(true);
-const intervalId = ref(null);
-export default {
-  setup() {
-    onMounted(() => {
-      setTimeout(() => {
-        showLoading.value = false;
-      }, 1000);
-      const progressEl = document.querySelector(".loading-bar");
-      if (progressEl) {
-        intervalId.value = setInterval(() => {
-          progressEl.value = progressEl.value + 1;
-          if (progressEl.value >= 100) {
-            clearInterval(intervalId.value);
-          }
-        }, 10);
-      }
-    });
+  import { onMounted, onUnmounted, ref } from 'vue';
+  const showLoading = ref(true);
+  const intervalId = ref(null);
+  export default {
+    setup() {
+      onMounted(() => {
+        setTimeout(() => {
+          showLoading.value = false;
+        }, 1000);
+        const progressEl = document.querySelector('.loading-bar');
+        if (progressEl) {
+          intervalId.value = setInterval(() => {
+            progressEl.value = progressEl.value + 1;
+            if (progressEl.value >= 100) {
+              clearInterval(intervalId.value);
+            }
+          }, 10);
+        }
+      });
 
-    onUnmounted(() => {
-      if (intervalId.value) {
-        clearInterval(intervalId.value);
-      }
-    });
+      onUnmounted(() => {
+        if (intervalId.value) {
+          clearInterval(intervalId.value);
+        }
+        showLoading.value = true;
+      });
 
-    return {
-      showLoading,
-    };
-  },
-};
+      return {
+        showLoading,
+      };
+    },
+  };
 </script>
 
 <style scoped>
-.loading-container {
-  width: 100vw;
-  height: 100vh;
-  background: greenyellow;
-  position: absolute;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
+  .loading-container {
+    width: 100vw;
+    height: 100vh;
+    background: greenyellow;
+    position: absolute;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
 </style>

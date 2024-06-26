@@ -14,7 +14,7 @@ export default class Renderer {
 
   bindMethods() {
     window.switchCamera = this.switchCamera.bind(this);
-}
+  }
 
   async getCameraStream(facingMode = this.currentFacingMode) {
     this.stopCurrentVideo();
@@ -30,7 +30,7 @@ export default class Renderer {
   stopCurrentVideo() {
     if (this.video?.srcObject) {
       const tracks = this.video.srcObject.getTracks();
-      tracks.forEach(track => track.stop());
+      tracks.forEach((track) => track.stop());
     }
   }
 
@@ -49,19 +49,19 @@ export default class Renderer {
 
     const stream = await this.getCameraStream();
     this.video.srcObject = stream;
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.video.onloadedmetadata = () => this.handleVideoMetadata(resolve);
     });
   }
 
   updateBackgroundTexture() {
     const videoTexture = new THREE.VideoTexture(this.video);
-    videoTexture.minFilter = THREE.NearestFilter
-    videoTexture.magFilter = THREE.NearestFilter
+    videoTexture.minFilter = THREE.NearestFilter;
+    videoTexture.magFilter = THREE.NearestFilter;
     videoTexture.format = THREE.RGBAFormat;
     videoTexture.colorSpace = THREE.SRGBColorSpace;
-    videoTexture.wrapS = THREE.RepeatWrapping
-    videoTexture.wrapT = THREE.RepeatWrapping
+    videoTexture.wrapS = THREE.RepeatWrapping;
+    videoTexture.wrapT = THREE.RepeatWrapping;
 
     if (this.currentFacingMode === 'user') {
       videoTexture.matrixAutoUpdate = false;
@@ -72,22 +72,27 @@ export default class Renderer {
   }
 
   setInstance() {
-    this.instance = new THREE.WebGLRenderer({ canvas: this.canvas, antialias: false, webgl2: true });
+    this.instance = new THREE.WebGLRenderer({
+      canvas: this.canvas,
+      antialias: false,
+      webgl2: true,
+    });
     this.instance.setSize(this.sizes.width, this.sizes.height);
     this.instance.setPixelRatio(this.sizes.pixelRatio);
     Object.assign(this.instance, {
       punctualLights: true,
       toneMapping: THREE.LinearToneMapping,
       colorSpace: THREE.SRGBColorSpace,
-      toneMappingExposure: Math.pow(2, 0)
+      toneMappingExposure: Math.pow(2, 0),
     });
   }
 
   async switchCamera() {
-    this.currentFacingMode = this.currentFacingMode === 'user' ? 'environment' : 'user';
+    this.currentFacingMode =
+      this.currentFacingMode === 'user' ? 'environment' : 'user';
     const stream = await this.getCameraStream();
     this.video.srcObject = stream;
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.video.onloadedmetadata = () => this.handleVideoMetadata(resolve);
     });
   }

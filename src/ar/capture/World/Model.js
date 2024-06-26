@@ -12,10 +12,10 @@ export default class Model {
 
     // Resource
     this.resource = this.resources.items[name];
-
     if (name === 'unoModel') {
       this.experience.world.environment.sunLight.intensity = 1.4;
     } else if (name === 'bellModel') {
+      console.log(name);
       this.experience.world.environment.sunLight.intensity = 1.4;
     }
 
@@ -39,7 +39,9 @@ export default class Model {
   }
 
   setModel() {
-    this.model = SkeletonUtils.clone(this.resource.scene) || SkeletonUtils.clone(this.resource.scene.children[0]);
+    this.model =
+      SkeletonUtils.clone(this.resource.scene) ||
+      SkeletonUtils.clone(this.resource.scene.children[0]);
     this.mixer = new THREE.AnimationMixer(this.model);
 
     this.resource.animations.forEach((clip) => {
@@ -65,7 +67,10 @@ export default class Model {
 
   onTouchStart(event) {
     if (this.isMoving) {
-      this.touchStartPosition.set(event.touches[0].clientX, event.touches[0].clientY);
+      this.touchStartPosition.set(
+        event.touches[0].clientX,
+        event.touches[0].clientY,
+      );
     }
     if (event.touches.length === 2 && this.isMoving) {
       const dx = event.touches[0].clientX - event.touches[1].clientX;
@@ -88,7 +93,10 @@ export default class Model {
       this.model.rotation.y -= deltaX * rotationFactor;
       this.model.rotation.x -= deltaY * rotationFactor;
 
-      this.touchStartPosition.set(event.touches[0].clientX, event.touches[0].clientY);
+      this.touchStartPosition.set(
+        event.touches[0].clientX,
+        event.touches[0].clientY,
+      );
 
       if (event.touches.length === 2 && this.isMoving) {
         const dx = event.touches[0].clientX - event.touches[1].clientX;

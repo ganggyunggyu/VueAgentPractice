@@ -26,6 +26,12 @@
     isCharacterListView.value = value;
   };
 
+  const handleCloseTutorial = () => {
+    isTutorial.value = false;
+    setCharacter(INIT.CHARACTER);
+    setFrame(INIT.FRAME);
+  };
+
   onMounted(() => {
     onSetVh();
   });
@@ -34,7 +40,7 @@
 <template>
   <Loading />
   <TopButtonNav />
-  <Tutorial v-if="isTutorial" @click="(isTutorial = false), setCharacter(INIT.CHARACTER), setFrame(INIT.FRAME)" />
+  <Tutorial v-if="isTutorial" @click="handleCloseTutorial" />
   <Capture :isTutorial="isTutorial" />
   <BottomButtonNav
     v-if="!isTutorial"

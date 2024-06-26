@@ -1,14 +1,14 @@
-import * as THREE from "three";
+import * as THREE from 'three';
 
-import Debug from "./Utils/Debug.js";
-import Sizes from "./Utils/Sizes.js";
-import Time from "./Utils/Time.js";
-import Camera from "./Camera.js";
-import Renderer from "./Renderer.js";
-import World from "./World/World.js";
-import Resources from "./Utils/Resources.js";
+import Debug from './Utils/Debug.js';
+import Sizes from './Utils/Sizes.js';
+import Time from './Utils/Time.js';
+import Camera from './Camera.js';
+import Renderer from './Renderer.js';
+import World from './World/World.js';
+import Resources from './Utils/Resources.js';
 
-import sources from "./sources.js";
+import sources from './sources.js';
 
 let instance = null;
 
@@ -34,7 +34,6 @@ export default class Experience {
     this.resources = new Resources(sources);
     this.camera = new Camera();
     this.renderer = new Renderer();
-
     this.world = new World();
 
     this.raycaster = new THREE.Raycaster();
@@ -45,9 +44,9 @@ export default class Experience {
 
     if (this.canvas) {
       this.canvas.addEventListener(
-        "touchstart",
+        'touchstart',
         this._checkForModelClick.bind(this),
-        { passive: true }
+        { passive: true },
       );
     }
 
@@ -56,12 +55,12 @@ export default class Experience {
     this.saveImageCallback = saveImageCallback;
 
     // Resize event
-    this.sizes.on("resize", () => {
+    this.sizes.on('resize', () => {
       this.resize();
     });
 
     // Time tick event
-    this.time.on("tick", () => {
+    this.time.on('tick', () => {
       this.update();
     });
   }
@@ -100,8 +99,8 @@ export default class Experience {
   }
 
   destroy() {
-    this.sizes.off("resize");
-    this.time.off("tick");
+    this.sizes.off('resize');
+    this.time.off('tick');
 
     // Traverse the whole scene
     this.scene.traverse((child) => {
@@ -114,7 +113,7 @@ export default class Experience {
           const value = child.material[key];
 
           // Test if there is a dispose function
-          if (value && typeof value.dispose === "function") {
+          if (value && typeof value.dispose === 'function') {
             value.dispose();
           }
         }
@@ -126,10 +125,10 @@ export default class Experience {
     if (this.debug.active) this.debug.ui.destroy();
   }
   _checkForModelClick(event) {
-    if (event.type === "click") {
+    if (event.type === 'click') {
       this.mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
       this.mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    } else if (event.type === "touchstart" && event.touches.length > 0) {
+    } else if (event.type === 'touchstart' && event.touches.length > 0) {
       this.mouse.x = (event.touches[0].clientX / window.innerWidth) * 2 - 1;
       this.mouse.y = -(event.touches[0].clientY / window.innerHeight) * 2 + 1;
     }
@@ -138,7 +137,7 @@ export default class Experience {
 
     const intersects = this.raycaster.intersectObjects(
       this.scene.children,
-      true
+      true,
     ); // recursive search through all children
 
     for (let i = 0; i < intersects.length; i++) {
@@ -146,10 +145,10 @@ export default class Experience {
         if (
           this._isObjectChildOf(intersects[i].object, this.clickedObject[j])
         ) {
-          if (intersects[i].object.name === "stickers") {
+          if (intersects[i].object.name === 'stickers') {
             this.world.sticker.isMoving = true;
           }
-          if (intersects[i].object.name === "model") {
+          if (intersects[i].object.name === 'model') {
             this.world.model.isMoving = true;
           }
         }

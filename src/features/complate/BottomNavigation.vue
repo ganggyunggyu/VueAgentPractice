@@ -3,23 +3,33 @@
   import PrevButtonRed2 from '@/shared/ui/PrevButtonRed2.vue';
   import Save from '@/shared/ui/Save.vue';
   import Share from '@/shared/ui/Share.vue';
+  import { useImageDataStore } from '@/stores/imageData';
+  import { blobDownload } from '@/shared/lib/blob';
+  const imageStore = useImageDataStore();
 
-  const handleSave = () => {};
+  const handleSave = () => {
+    const imageData = imageStore.getImageData();
+    blobDownload(imageData);
+  };
+
   const handleShare = () => {};
+
   const handlePrev = () => {
-    router.push('busan');
+    router.replace('busan');
   };
 </script>
+
 <template>
   <section>
     <button @click="handlePrev">
       <PrevButtonRed2 />
       <span>뒤로</span>
     </button>
-    <button><Save /> <span>저장</span></button>
+    <button @click="handleSave"><Save /> <span>저장</span></button>
     <button class="scale-animation"><Share /> <span>공유</span></button>
   </section>
 </template>
+
 <style scoped>
   section {
     position: fixed;

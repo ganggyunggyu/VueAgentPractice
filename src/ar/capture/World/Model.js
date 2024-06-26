@@ -12,13 +12,6 @@ export default class Model {
 
     // Resource
     this.resource = this.resources.items[name];
-    if (name === 'unoModel') {
-      this.experience.world.environment.sunLight.intensity = 1.4;
-    } else if (name === 'bellModel') {
-      console.log(name);
-      this.experience.world.environment.sunLight.intensity = 1.4;
-    }
-
     this.isMoving = false;
 
     this.initialPinchDistance = 0;
@@ -35,7 +28,17 @@ export default class Model {
 
     this.touchStartPosition = new THREE.Vector2();
 
+    this.setSunLight(name);
+
     this.setModel();
+  }
+
+  setSunLight(name) {
+    if (name === 'unoModel') {
+      this.experience.world.environment.sunLight.intensity = 1.4;
+    } else if (name === 'bellModel') {
+      this.experience.world.environment.sunLight.intensity = 1.4;
+    }
   }
 
   setModel() {
@@ -43,7 +46,6 @@ export default class Model {
       SkeletonUtils.clone(this.resource.scene) ||
       SkeletonUtils.clone(this.resource.scene.children[0]);
     this.mixer = new THREE.AnimationMixer(this.model);
-
     this.resource.animations.forEach((clip) => {
       const action = this.mixer.clipAction(clip);
       action.play();

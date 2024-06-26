@@ -17,6 +17,10 @@ export default class Resources extends EventEmitter {
     this.startLoading();
   }
 
+  bindMethods() {
+    window.isResourcesLoading = this.isResourcesLoading.bind(this);
+  }
+
   setLoaders() {
     this.loaders = {};
     this.loaders.gltfLoader = new GLTFLoader();
@@ -25,6 +29,8 @@ export default class Resources extends EventEmitter {
     this.loaders.audioLoader = new THREE.AudioLoader();
     this.loaders.exrLoader = new EXRLoader();
   }
+
+  //리소스가 끝나야 월드가 생성된다
 
   startLoading() {
     for (const source of this.sources) {
@@ -51,12 +57,16 @@ export default class Resources extends EventEmitter {
       }
     }
   }
+  isResourcesLoading() {
+    if (this.loaded === this.toLoad) return true;
+    return false;
+  }
 
   sourceLoaded(source, file) {
     this.items[source.name] = file;
 
     this.loaded++;
-
+    console.log(this.loaded);
     if (this.loaded === this.toLoad) {
       this.trigger('ready');
     }

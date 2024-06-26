@@ -64,10 +64,10 @@ export default class Experience {
       this.update();
     });
   }
-
   bindMethods() {
     this.camera.bindMethods();
     this.renderer.bindMethods();
+    this.resources.bindMethods();
   }
 
   resize() {

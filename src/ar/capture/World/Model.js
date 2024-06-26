@@ -27,13 +27,20 @@ export default class Model {
     window.addEventListener('touchend', this.onTouchEnd.bind(this));
 
     this.touchStartPosition = new THREE.Vector2();
-
+    console.log(this.resources);
+    console.log(this.resource);
+    // this.resources.on('ready', () => {
+    //   console.log(this.resources);
+    //   console.log(this.resource);
+    //   this.setSunLight(name);
+    //   this.setModel();
+    // });
     this.setSunLight(name);
-
     this.setModel();
   }
 
   setSunLight(name) {
+    console.log(this.resources.isLoading);
     if (name === 'unoModel') {
       this.experience.world.environment.sunLight.intensity = 1.4;
     } else if (name === 'bellModel') {
@@ -42,29 +49,32 @@ export default class Model {
   }
 
   setModel() {
-    this.model =
-      SkeletonUtils.clone(this.resource.scene) ||
-      SkeletonUtils.clone(this.resource.scene.children[0]);
-    this.mixer = new THREE.AnimationMixer(this.model);
-    this.resource.animations.forEach((clip) => {
-      const action = this.mixer.clipAction(clip);
-      action.play();
-    });
+    console.log(this.resources.isLoading);
+    if (this.resource) {
+      this.model =
+        SkeletonUtils.clone(this.resource.scene) ||
+        SkeletonUtils.clone(this.resource.scene.children[0]);
+      this.mixer = new THREE.AnimationMixer(this.model);
+      this.resource.animations.forEach((clip) => {
+        const action = this.mixer.clipAction(clip);
+        action.play();
+      });
 
-    this.model.scale.set(1.5, 1.5, 1.5);
-    this.model.position.set(0, 2, 0);
-    this.model.rotation.set(0, 0, 0);
-    this.scene.add(this.model);
+      this.model.scale.set(1.5, 1.5, 1.5);
+      this.model.position.set(0, 2, 0);
+      this.model.rotation.set(0, 0, 0);
+      this.scene.add(this.model);
 
-    this.model.traverse((child) => {
-      if (child instanceof THREE.Mesh) {
-        child.name = 'model';
+      this.model.traverse((child) => {
+        if (child instanceof THREE.Mesh) {
+          child.name = 'model';
 
-        child.material.depthWrite = !child.material.transparent;
-        this.experience.clickedObject.push(child);
-      }
-    });
-    this.experience.clickedObject.push(this.model);
+          child.material.depthWrite = !child.material.transparent;
+          this.experience.clickedObject.push(child);
+        }
+      });
+      this.experience.clickedObject.push(this.model);
+    }
   }
 
   onTouchStart(event) {

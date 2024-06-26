@@ -1,7 +1,8 @@
 import Experience from '@/ar/capture/Experience';
 import router from '@/router/index';
 import { useImageDataStore } from '@/stores/imageData';
-import { ref, shallowRef, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
+import { onBeforeRouteLeave } from 'vue-router';
 
 const useExperience = () => {
   let experience;
@@ -48,12 +49,20 @@ const useExperience = () => {
     console.log('Experience Mount!');
 
     experience = new Experience(document.querySelector('.webgl'), saveImage);
+    // experience.value.init();
   });
   onUnmounted(() => {
-    console.log('Experience UnMount !');
+    console.log('Experience UnMount!');
 
-    experience = new Experience(document.querySelector('.webgl'), saveImage);
+    // experience = new Experience(document.querySelector('.webgl'), saveImage);
 
+    // experience.init();
+  });
+
+  onBeforeRouteLeave(() => {
+    console.log('Experience Route Leave!');
+    experience.destroy();
+    experience.dispose();
     experience.init();
   });
 
@@ -62,6 +71,7 @@ const useExperience = () => {
     setSticker,
     setFrame,
     saveImage,
+    experience,
   };
 };
 

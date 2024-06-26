@@ -11,14 +11,21 @@
 
 <script>
   import { onMounted, onUnmounted, ref } from 'vue';
+  import useExperience from '@/features/capture/hooks/useExperience';
   const showLoading = ref(true);
   const intervalId = ref(null);
+
+  const { experience } = useExperience();
+
+  console.log(navigator.connection.effectiveType);
+  console.log(experience);
+
   export default {
     setup() {
       onMounted(() => {
         setTimeout(() => {
           showLoading.value = false;
-        }, 1000);
+        }, 10000);
         const progressEl = document.querySelector('.loading-bar');
         if (progressEl) {
           intervalId.value = setInterval(() => {

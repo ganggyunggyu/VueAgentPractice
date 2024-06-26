@@ -49,6 +49,7 @@ const useExperience = () => {
     console.log('Experience Mount!');
 
     experience = new Experience(document.querySelector('.webgl'), saveImage);
+    console.log(experience);
     // experience.value.init();
   });
   onUnmounted(() => {
@@ -67,6 +68,7 @@ const useExperience = () => {
   });
 
   return {
+    experience,
     setCharacter,
     setSticker,
     setFrame,

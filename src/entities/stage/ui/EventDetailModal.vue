@@ -28,14 +28,7 @@
   <section>
     <button class="close-button" @click="closeModal">❌</button>
     <article class="top-container">
-      <img
-        width="70px"
-        height="70px"
-        loading="lazy"
-        class="icon"
-        :src="`${getUrl(props.event.icon)}`"
-        alt=""
-      />
+      <img width="70px" height="70px" loading="lazy" class="icon" :src="`${getUrl(props.event.icon)}`" alt="" />
       <div class="title-container">
         <p class="content1">{{ props.event.content1 }}</p>
         <p class="content2">{{ props.event.content2 }}</p>
@@ -43,11 +36,7 @@
       </div>
     </article>
     <article class="bottom-container">
-      <img
-        class="logo"
-        src="../../../../static/resource/common/event_logo.png"
-        alt="logo-image"
-      />
+      <img class="logo" src="../../../../static/resource/common/event_logo.png" alt="logo-image" />
       <img
         width="250px"
         height="250px"

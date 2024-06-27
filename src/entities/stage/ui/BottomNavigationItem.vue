@@ -1,15 +1,15 @@
 <script setup>
-import { defineProps } from 'vue';
+  import { defineProps } from 'vue';
 
-defineProps({
-  icon: {
-    type: String,
-  },
+  defineProps({
+    icon: {
+      type: String,
+    },
 
-  lable: {
-    type: String,
-  },
-});
+    lable: {
+      type: String,
+    },
+  });
 </script>
 
 <template>
@@ -20,40 +20,40 @@ defineProps({
 </template>
 
 <script>
-export default {};
+  export default {};
 </script>
 
 <style scoped>
-button {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: white;
-  padding: 10px;
-  border: 3px solid var(--color-red);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-  transition: scale 0.3s;
-}
+  button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 10px;
+    border: 3px solid var(--color-red);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    transition: scale 0.3s;
+  }
 
-button:hover {
-  scale: 1.1;
-}
-button:active {
-  scale: 1.1;
-}
-img {
-  width: 100%;
-  height: 100%;
-}
-p {
-  color: white;
-  width: 100px;
-  position: absolute;
-  bottom: -20px;
-}
+  button:hover {
+    scale: 1.1;
+  }
+  button:active {
+    scale: 1.1;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  p {
+    color: white;
+    width: 100px;
+    position: absolute;
+    bottom: -20px;
+  }
 </style>

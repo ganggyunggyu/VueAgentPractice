@@ -29,18 +29,17 @@ export default class Model {
     this.touchStartPosition = new THREE.Vector2();
     console.log(this.resources);
     console.log(this.resource);
-    // this.resources.on('ready', () => {
-    //   console.log(this.resources);
-    //   console.log(this.resource);
-    //   this.setSunLight(name);
-    //   this.setModel();
-    // });
+    this.resources.on('ready', () => {
+      console.log(this.resources);
+      console.log(this.resource);
+      this.setSunLight(name);
+      this.setModel();
+    });
     this.setSunLight(name);
     this.setModel();
   }
 
   setSunLight(name) {
-    console.log(this.resources.isLoading);
     if (name === 'unoModel') {
       this.experience.world.environment.sunLight.intensity = 1.4;
     } else if (name === 'bellModel') {
@@ -49,7 +48,6 @@ export default class Model {
   }
 
   setModel() {
-    console.log(this.resources.isLoading);
     if (this.resource) {
       this.model =
         SkeletonUtils.clone(this.resource.scene) ||

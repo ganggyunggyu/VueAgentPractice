@@ -1,6 +1,6 @@
 <script setup>
   import BottomArrow from '@/shared/ui/BottomArrow.vue';
-  import { CHARACTERS } from '../constant/constant';
+  import { CHARACTERS } from '../constant/URL';
   import useExperience from '../capture/hooks/useExperience';
   import { ref, onMounted } from 'vue';
   const emits = defineEmits(['update:isCharacterListView']);

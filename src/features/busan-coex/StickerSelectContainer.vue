@@ -1,24 +1,24 @@
 <script setup>
-import BottomArrow from "@/shared/ui/BottomArrow.vue";
-import { STICKERS } from "../constant/constant";
-import useExperience from "../capture/hooks/useExperience";
-import { ref } from "vue";
-const emits = defineEmits(["update:isStickerListView"]);
-const props = defineProps({
-  isStickerListView: Boolean,
-});
+  import BottomArrow from '@/shared/ui/BottomArrow.vue';
+  import { STICKERS } from '../constant/URL';
+  import useExperience from '../capture/hooks/useExperience';
+  import { ref } from 'vue';
+  const emits = defineEmits(['update:isStickerListView']);
+  const props = defineProps({
+    isStickerListView: Boolean,
+  });
 
-const selected = ref(null);
+  const selected = ref(null);
 
-const { setSticker } = useExperience();
-const handleCloseList = () => {
-  emits("update:isStickerListView", !props.isStickerListView);
-};
+  const { setSticker } = useExperience();
+  const handleCloseList = () => {
+    emits('update:isStickerListView', !props.isStickerListView);
+  };
 
-const handleClick = (image, i) => {
-  setSticker(image);
-  selected.value = image.id;
-};
+  const handleClick = (image, i) => {
+    setSticker(image);
+    selected.value = image.id;
+  };
 </script>
 
 <template>
@@ -35,32 +35,32 @@ const handleClick = (image, i) => {
 </template>
 
 <style scoped>
-section {
-  position: fixed;
-  bottom: calc(20 * var(--vh));
-  z-index: 999;
-  min-width: 100%;
-  padding: 0 10px;
-  display: flex;
-  gap: 10px;
-  overflow: scroll;
-  width: 100%;
-}
-article {
-  height: calc(10 * var(--vh));
-  min-width: calc(10 * var(--vh));
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  cursor: pointer;
-  display: inline-flex;
-}
-.selected {
-  filter: grayscale(100%);
-}
-img {
-  width: 90%;
-}
+  section {
+    position: fixed;
+    bottom: calc(20 * var(--vh));
+    z-index: 999;
+    min-width: 100%;
+    padding: 0 10px;
+    display: flex;
+    gap: 10px;
+    overflow: scroll;
+    width: 100%;
+  }
+  article {
+    height: calc(10 * var(--vh));
+    min-width: calc(10 * var(--vh));
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+  }
+  .selected {
+    filter: grayscale(100%);
+  }
+  img {
+    width: 90%;
+  }
 </style>

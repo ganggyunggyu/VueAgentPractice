@@ -10,7 +10,7 @@
 
   import useExperience from '@/features/capture/hooks/useExperience';
   import useSetVh from '@/shared/hooks/useSetVh';
-  import { INIT } from '@/features/constant/constant';
+  import { INIT } from '@/features/constant/URL';
 
   const isCharacterListView = ref(false);
   const isStickerListView = ref(false);
